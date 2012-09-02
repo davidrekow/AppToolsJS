@@ -1,0 +1,12 @@
+## AppToolsJS tests cakefile ##
+{exec} = require 'child_process'
+
+task 'compile:tests', 'Compile Coffeescript Jasmine tests to JS', () ->
+
+    exec 'coffee -bj util.js -o compiled -c ../util.coffee', (err, stdout, stderr) ->
+        throw err if err?
+        console.log stdout + stderr
+
+    exec 'coffee -bj test.js -o compiled -c spec/*.coffee', (err, stdout, stderr) ->
+        throw err if err?
+        console.log stdout + stderr
